@@ -9,6 +9,9 @@
 
 sbit DE_RE=P3^5;
 
+sbit ADDR_JMP_1=P3^6;
+sbit ADDR_JMP_2=P3^7;
+
 //-----------------------------------------------------------------------------------
 volatile unsigned char xdata DEV_NAME[DEVICE_NAME_LENGTH_SYM] ="FLOW_METER"; //имя устройства
 volatile unsigned char xdata NOTICE[DEVICE_DESC_MAX_LENGTH_SYM]="FLOW METER";//примечание 	
@@ -183,7 +186,36 @@ void Protocol_Init(void) //using 0
 //	TransferBuf=&RecieveBuf[0];	 //буфер ответа =буфер запроса
 
 	Restore_Dev_Address_Desc();
+	//-----------------------
+	//Установить адрес в зависимости от перемычек
+	switch((((unsigned char)ADDR_JMP_1&0x1)|(((unsigned char)ADDR_JMP_2&0x1)<<1))&0x3)
+	{
+		case 0:
+		{
+			ADRESS_DEV=0x1;
+		}
+		break;
 
+		case 1:
+		{
+			ADRESS_DEV=0x2;
+		}
+		break;
+		
+		case 2:
+		{
+			ADRESS_DEV=0x3;
+		}
+		break;
+		
+		case 3:
+		{
+			ADRESS_DEV=0x3;
+		}
+		break;
+
+	}
+	//-----------------------
 
 	recieve_count=0x0;//счетчик буфера приема
 	transf_count=0x0;//счетчик передаваемых байтов
