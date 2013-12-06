@@ -9,7 +9,7 @@
 #include <math.h>
 
 //-----------------------------------------------------------
-#define ADC_CHANNELS_NUM	8//количество аналоговых каналов контроллера
+#define ADC_CHANNELS_NUM	1//количество аналоговых каналов контроллера
 //#define ADC_MODE_ZEROCAL_INT 0x04 // 0000 0100
 //#define ADC_MODE_FULLCAL_INT 0x05 // 0000 0101
 //---------------------пределы измерени€---------------------
@@ -23,14 +23,16 @@
 #define RN_2560				0x7//2.56 V
 
 //-----------------------режимы------------------------------
-#define ADC_PWR_DWN			0x0 //power down
-#define	ADC_IDLE_MD			0x1	//idle
-#define	ADC_SINGLE_CONV		0x2	//single conversion
-#define ADC_CONTIN_CONV		0x3	//continous conversion
-#define ADC_INTERNAL_CAL	0x4//internal calibration
-#define ADC_FULL_INT_CAL	0x5 //fullscale calibration
-#define ADC_SYSTEM_CAL		0x6//internal system calibration
-#define ADC_FULL_SYS_CAL	0x7 //fullscale system calibration
+#define ADC_PWR_DWN				0x0 //power down
+#define	ADC_IDLE_MD				0x1	//idle
+#define	ADC_SINGLE_CONV			0x2	//single conversion
+#define ADC_CONTIN_CONV			0x3	//continous conversion
+#define ADC_0_INTERNAL_CAL		0x4//internal calibration
+#define ADC_FULL_INTERNAL_CAL	0x5 //fullscale calibration
+#define ADC_0_SYSTEM_CAL		0x6//internal system calibration
+#define ADC_FULL_SYSTEM_CAL		0x7 //fullscale system calibration
+//-----------------------------------------------------------
+#define ADC0_ENABLE			0x20
 //-----------------------------входы-------------------------
 #define AIN1_AINCOM 		0x1
 #define AIN2_AINCOM			0x2
@@ -57,6 +59,8 @@
 #define ADC_UNIPOLAR		0x20//унипол€рный режим
 #define ADC_BIPOLAR			0x0//бипол€рный режим
 //-----------------------------------------------------------
+#define ADC_STATUS_CALIBRATE	0x20
+
 struct ADC_Channels	   //структура значений и настройки канала ј÷ѕ
 {
 	union  //буфер усреднени€ дл€ каждого канала
@@ -86,4 +90,7 @@ void ADC_Restore_Settings(void);//восстановление настроек ацп
 //----------------------------------------------------------------------------------
 extern struct Channel xdata channels[CHANNEL_NUMBER];
 //---------------------
+#define ADC_CHANNEL	0
+#define USO_CHANNEL	0
+//-----------------------------------------------------------------------------
 #endif
