@@ -16,24 +16,25 @@ volatile unsigned long  temp;
 
   while(1) 
   {
-	   PT_DELAY(pt,1);
-	  //------------ищем новое измерение-----------------
-
-		if(!adc_channels[USO_CHANNEL].new_measuring)
-		{
-//			counter=0;
-//			while((!adc_channels[mid_cycle_counter].new_measuring) && (counter!=ADC_CHANNELS_NUM))
-//			{
-//				mid_cycle_counter= (mid_cycle_counter+1)&0x7;
-//				counter++;
-//				PT_YIELD(pt);//отдаем другим процессам
-//			}
-//			
-//			if(counter==ADC_CHANNELS_NUM)//если нового измерения не найдено-рестарт процесса
-//			{
-			    PT_RESTART(pt);
-//			}
-		}
+  PT_YIELD_UNTIL(pt,adc_channels[USO_CHANNEL].new_measuring);
+//	   PT_DELAY(pt,5);
+//	  //------------ищем новое измерение-----------------
+//
+//		if(!adc_channels[USO_CHANNEL].new_measuring)
+//		{
+////			counter=0;
+////			while((!adc_channels[mid_cycle_counter].new_measuring) && (counter!=ADC_CHANNELS_NUM))
+////			{
+////				mid_cycle_counter= (mid_cycle_counter+1)&0x7;
+////				counter++;
+////				PT_YIELD(pt);//отдаем другим процессам
+////			}
+////			
+////			if(counter==ADC_CHANNELS_NUM)//если нового измерения не найдено-рестарт процесса
+////			{
+//			    PT_RESTART(pt);
+////			}
+//		}
 	
 	  //-----------------копируем во временный массив-----------------------------
 	   	memcpy(mas_copy,adc_channels[USO_CHANNEL].ADC_BUF_UN,ADC_BUF_SIZE*sizeof(unsigned long)); 
