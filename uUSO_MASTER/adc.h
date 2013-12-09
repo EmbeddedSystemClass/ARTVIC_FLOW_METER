@@ -90,7 +90,7 @@ void ADC_Restore_Settings(void);//восстановление настроек ацп
 //----------------------------------------------------------------------------------
 extern struct Channel xdata channels[CHANNEL_NUMBER];
 //---------------------
-#define ADC_CHANNEL	0
+#define ADC_CHANNEL	AIN1_AINCOM
 #define USO_CHANNEL	0
 //-----------------------------------------------------------------------------
 #endif

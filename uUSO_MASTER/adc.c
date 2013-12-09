@@ -29,7 +29,7 @@ void ADC_Initialize() //using 0
 	ADC_Out_Freq(100);	
 
 	ADC0CON2&=0xF0;
-	ADC0CON2|=EXT_REF;//включим внешнюю опору
+	ADC0CON2|=INTERN_REF;//внутренн€€ опора
 	EADC = 1;
 
 	ADCMODE |= 0x20; //0010 0000 //ENABLE

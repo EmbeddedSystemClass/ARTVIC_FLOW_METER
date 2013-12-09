@@ -210,7 +210,7 @@ void Protocol_Init(void) //using 0
 		
 		case 3:
 		{
-			ADRESS_DEV=0x3;
+			ADRESS_DEV=0x4;
 		}
 		break;
 
