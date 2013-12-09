@@ -7,7 +7,7 @@
 #include "watchdog.h"
 //-----------------------------------------------------------------------------------
 
-sbit DE_RE=P3^5;
+sbit DE_RE=P3^3;
 
 sbit ADDR_JMP_1=P3^6;
 sbit ADDR_JMP_2=P3^7;
