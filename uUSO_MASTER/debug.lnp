@@ -6,8 +6,6 @@
 "proto_uso.obj",
 "channels.obj",
 "START_AD.obj",
-"timer0.obj",
-"timer2.obj",
 "calibrate.obj",
 "ulongsort.obj",
 "timer1.obj",

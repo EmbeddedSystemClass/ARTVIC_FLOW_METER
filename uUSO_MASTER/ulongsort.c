@@ -1,5 +1,6 @@
 #include "ulongsort.h"
 #include "adc.h"
+#include "watchdog.h"
 
 volatile unsigned long mas_copy[ADC_BUF_SIZE];
 volatile unsigned char xdata mid_cycle_counter=0;
@@ -11,6 +12,7 @@ volatile unsigned long  temp;
  PT_THREAD(ulongsort_process(struct pt *pt))
  {
    static volatile  unsigned char counter=0,i=0,j=0;
+   wdt_count[Sort_Process].process_state=RUN;
    
    PT_BEGIN(pt);
 
@@ -62,6 +64,7 @@ volatile unsigned long  temp;
   		}
 
 		adc_channels[USO_CHANNEL].new_measuring=0;
+		wdt_count[Sort_Process].count++;
 		PT_RESTART(pt);
 	  //----------------------------------------------	
    }

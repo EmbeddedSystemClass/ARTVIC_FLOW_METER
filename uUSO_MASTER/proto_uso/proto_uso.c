@@ -67,6 +67,7 @@ void UART_ISR(void) interrupt 4 //using 1
 
 
 		symbol=SBUF;
+		wdt_count[Proto_Process].process_state=RUN;
 		switch(symbol)
 		{
 			case (char)(0xD7):
@@ -726,9 +727,11 @@ PT_THREAD(ProtoProcess(struct pt *pt))
 		ES=1;
   //-----------------------------
 	  // PT_WAIT_UNTIL(pt,RECIEVED); //ждем команды на старт
+	   wdt_count[Proto_Process].process_state=IDLE;
+
 	   PT_YIELD_UNTIL(pt,RECIEVED); //ждем команды на старт	
 
-	   WDT_Clear();//если посылка не приходит-сбрасываем
+//	   WDT_Clear();//если посылка не приходит-сбрасываем
 
 	  
 	    RECIEVED=0;
@@ -764,6 +767,7 @@ PT_THREAD(ProtoProcess(struct pt *pt))
 
 			PT_DELAY(pt,10);			
 		}
+		wdt_count[Proto_Process].count++;
   //-----------------------------
   }
 
