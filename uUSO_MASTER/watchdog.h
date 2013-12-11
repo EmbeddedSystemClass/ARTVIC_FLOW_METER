@@ -26,7 +26,7 @@ enum
 struct watchdog
 {
   unsigned char process_state;
-  unsigned char count;
+  unsigned int count;
 };
 
 extern struct watchdog wdt_count[];
