@@ -444,26 +444,6 @@
               <FilePath>.\START_AD.A51</FilePath>
             </File>
             <File>
-              <FileName>frequency.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\frequency.c</FilePath>
-            </File>
-            <File>
-              <FileName>timer0.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\timer0.c</FilePath>
-            </File>
-            <File>
-              <FileName>timer2.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\timer2.c</FilePath>
-            </File>
-            <File>
-              <FileName>i2c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\i2c.c</FilePath>
-            </File>
-            <File>
               <FileName>calibrate.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\calibrate\calibrate.c</FilePath>

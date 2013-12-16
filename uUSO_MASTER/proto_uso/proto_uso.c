@@ -730,7 +730,7 @@ PT_THREAD(ProtoProcess(struct pt *pt))
 	   wdt_count[Proto_Process].process_state=IDLE;
 
 	   PT_YIELD_UNTIL(pt,RECIEVED); //ждем команды на старт	
-
+	   wdt_count[Proto_Process].count++;
 //	   WDT_Clear();//если посылка не приходит-сбрасываем
 
 	  
@@ -767,7 +767,7 @@ PT_THREAD(ProtoProcess(struct pt *pt))
 
 			PT_DELAY(pt,10);			
 		}
-		wdt_count[Proto_Process].count++;
+	
   //-----------------------------
   }
 
